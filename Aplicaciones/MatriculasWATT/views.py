@@ -16,14 +16,16 @@ def listaCarrera(request):
 
 def listaCurso(request):
     cursoBdd=cursoWATT.objects.all()
+    carreraBdd=carreraWATT.objects.all()
     return render(request, 'listaCurso.html', {
-        'cursos': cursoBdd
+        'cursos': cursoBdd, 'carreras': carreraBdd
     })
 
 def listaAsignatura(request):
     asignaturaBdd=asignaturaWATT.objects.all()
+    cursoBdd=cursoWATT.objects.all()
     return render(request, 'listaAsignatura.html', {
-        'asignaturas': asignaturaBdd
+        'asignaturas': asignaturaBdd, 'cursos': cursoBdd
     })
 
 
@@ -51,15 +53,15 @@ def crearCurso(request):
     aulaCursoWATT = request.POST['aulaCursoWATT']
     horarioCursoWATT = request.FILES.get('horarioCursoWATT')
 
-    carreraWATT = request.POST['idCarreraWATT']
-    carreraSeleccionadaWATT = carreraWATT.objects.get(idCarreraWATT=carreraWATT)
+    carrera = request.POST['idCarreraWATT']
+    carreraSeleccionada = carreraWATT.objects.get(idCarreraWATT=carrera)
 
     nuevoCurso= cursoWATT.objects.create(
         nivelCursoWATT=nivelCursoWATT,
         descripcionCursoWATT=descripcionCursoWATT,
         aulaCursoWATT=aulaCursoWATT,
         horarioCursoWATT=horarioCursoWATT,
-        carreraWATT=carreraSeleccionadaWATT
+        carrera=carreraSeleccionada
     )
     messages.success(request, 'Curso creado correctamente')
     return redirect('/listaCurso')
@@ -73,8 +75,9 @@ def crearAsignatura(request):
     silaboAsignaturaWATT = request.FILES.get('silaboAsignaturaWATT')
     descripcionAsignaturaWATT = request.POST['descripcionAsignaturaWATT']
     departamentoAsignaturaWATT = request.POST['departamentoAsignaturaWATT']
-    cursoWATT = request.POST['idCursoWATT']
-    cursoSeleccionadoWATT = cursoWATT.objects.get(idCursoWATT=cursoWATT)
+
+    curso = request.POST['idCursoWATT']
+    cursoSeleccionado = cursoWATT.objects.get(idCursoWATT=curso)
 
     nuevaAsignatura= asignaturaWATT.objects.create(
         nombreAsignaturaWATT=nombreAsignaturaWATT,
@@ -85,7 +88,7 @@ def crearAsignatura(request):
         silaboAsignaturaWATT=silaboAsignaturaWATT,
         descripcionAsignaturaWATT=descripcionAsignaturaWATT,
         departamentoAsignaturaWATT=departamentoAsignaturaWATT,
-        cursoWATT=cursoSeleccionadoWATT
+        curso=cursoSeleccionado
     )
     messages.success(request, 'Asignatura creada correctamente')
     return redirect('/listaAsignatura')
