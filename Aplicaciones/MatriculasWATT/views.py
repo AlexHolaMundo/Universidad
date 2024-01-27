@@ -43,7 +43,7 @@ def crearCarrera(request):
         descripcionCarreraWATT=descripcionCarreraWATT
     )
     messages.success(request, 'Carrera creada correctamente')
-    return redirect('/')
+    return redirect('/listaCarrera')
 
 def crearCurso(request):
     nivelCursoWATT = request.POST['nivelCursoWATT']

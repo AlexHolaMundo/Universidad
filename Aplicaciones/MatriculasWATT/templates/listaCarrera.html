@@ -1,156 +1,155 @@
-<div class="container-fluid">
+{%extends './home.html'%} {%block contenido%} {% load static %}
+<div class="container m-4">
   <div class="row">
-    <div class="col-md-5">
-      <div class="right-content">
-        <div class="top-content">
-          <h3>Registrar <em>Carrera</em></h3>
-        </div>
-        <form
-          id="formCarreraWATT"
-          action="/crearCarrera/"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          {% csrf_token %}
-          <div class="row">
-            <div class="col-md-6">
-              <fieldset>
-                <label for=""> Nombre</label>
-                <input
-                  name="nombreCarreraWATT"
-                  id="nombreCarreraWATT"
-                  type="text"
-                  class="form-control"
-                  placeholder="Sistemas"
-                  required=""
-                />
-              </fieldset>
-            </div>
-            <div class="col-md-6">
-              <fieldset>
-                <label for="">Logo</label>
-                <input
-                  name="logoCarreraWATT"
-                  id="logoCarreraWATT"
-                  type="file"
-                  accept="image/*"
-                  class="form-control"
-                  required=""
-                />
-              </fieldset>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <fieldset>
-                <label for="">Director</label>
-                <input
-                  name="directorCarreraWATT"
-                  id="directorCarreraWATT"
-                  type="text"
-                  class="form-control"
-                  placeholder="Mcs. Juan Perez"
-                  required=""
-                />
-              </fieldset>
-            </div>
-            <div class="col-md-6">
-              <fieldset>
-                <label for="">Fecha de creacion</label>
-                <input
-                  name="fechaCreacionCarreraWATT"
-                  id="fechaCreacionCarreraWATT"
-                  type="date"
-                  class="form-control"
-                  required=""
-                />
-              </fieldset>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <fieldset>
-                <label for="">Descripcion</label>
-                <textarea
-                  name="descripcionCarreraWATT"
-                  id="descripcionCarreraWATT"
-                  rows="4"
-                  class="form-control"
-                  placeholder="Descripcion de la carrera"
-                  required=""
-                ></textarea>
-              </fieldset>
-            </div>
-          </div>
-          <div class="col-md-12">
+    <div class="col-md-12">
+      <div class="top-content">
+        <h3 class="text-center">Registrar <em>Carrera</em></h3>
+      </div>
+      <form
+        id="formCarreraWATT"
+        action="/crearCarrera/"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6">
             <fieldset>
-              <button type="submit" id="" class="button">Registrar</button>
+              <label for=""> Nombre</label>
+              <input
+                name="nombreCarreraWATT"
+                id="nombreCarreraWATT"
+                type="text"
+                class="form-control"
+                placeholder="Sistemas"
+                required=""
+              />
             </fieldset>
           </div>
-        </form>
-      </div>
-    </div>
-    <div class="col-md-7 col-xs-12">
-      <div class="continer centerIt">
-        <div class="table-responsive">
-          <table class="table table-light bg-white" id="tableCarreras">
-            <thead>
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Logo</th>
-                <th scope="col">Director</th>
-                <th scope="col">Fecha de creacion</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for carrera in carreras %}
-              <tr>
-                <td class="text-center">{{carrera.idCarreraWATT}}</td>
-                <td class="text-center">{{carrera.nombreCarreraWATT}}</td>
-                <td class="text-center">
-                  {% if carrera.logoCarreraWATT %}
-                  <a href="{{carrera.logoCarreraWATT.url}}" target="_blank">
-                    <img
-                      src="{{carrera.logoCarreraWATT.url}}"
-                      alt=""
-                      width="50px"
-                      height="50px"
-                    />
-                  </a>
-                  {% else %}
-                  <b>N/A</b>
-                  {% endif %}
-                </td>
-                <td class="text-center">{{carrera.directorCarreraWATT}}</td>
-                <td class="text-center">
-                  {{carrera.fechaCreacionCarreraWATT}}
-                </td>
-                <td class="text-center">{{carrera.descripcionCarreraWATT}}</td>
-                <td class="text-center">
-                  <a
-                    href="/editarCarrera/{{carrera.idCarreraWATT}}"
-                    class="btn btn-warning"
-                  >
-                    Editar
-                  </a>
-                  <a
-                    href="javascript:void(0);"
-                    type="button"
-                    class="btn btn-danger"
-                    onclick="eliminarCarrera(' /eliminarCarrera/{{carrera.idCarreraWATT}} ')"
-                  >
-                    Eliminar
-                  </a>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Logo</label>
+              <input
+                name="logoCarreraWATT"
+                id="logoCarreraWATT"
+                type="file"
+                accept="image/*"
+                class="form-control"
+                required=""
+              />
+            </fieldset>
+          </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Director</label>
+              <input
+                name="directorCarreraWATT"
+                id="directorCarreraWATT"
+                type="text"
+                class="form-control"
+                placeholder="Mcs. Juan Perez"
+                required=""
+              />
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Fecha de creacion</label>
+              <input
+                name="fechaCreacionCarreraWATT"
+                id="fechaCreacionCarreraWATT"
+                type="date"
+                class="form-control"
+                required=""
+              />
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <label for="">Descripcion</label>
+              <textarea
+                name="descripcionCarreraWATT"
+                id="descripcionCarreraWATT"
+                rows="4"
+                class="form-control"
+                placeholder="Descripcion de la carrera"
+                required=""
+              ></textarea>
+            </fieldset>
+          </div>
+        </div>
+        <center class="col-md-12 m-4">
+          <fieldset>
+            <button type="submit" id="" class="btn btn-success">
+              Registrar
+            </button>
+            <button type="reset" class="btn btn-danger">Cancelar</button>
+          </fieldset>
+        </center>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-light bg-white" id="tableCarreras">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Logo</th>
+            <th scope="col">Director</th>
+            <th scope="col">Fecha de creacion</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for carrera in carreras %}
+          <tr>
+            <td class="text-center">{{carrera.idCarreraWATT}}</td>
+            <td class="text-center">{{carrera.nombreCarreraWATT}}</td>
+            <td class="text-center">
+              {% if carrera.logoCarreraWATT %}
+              <a href="{{carrera.logoCarreraWATT.url}}" target="_blank">
+                <img
+                  src="{{carrera.logoCarreraWATT.url}}"
+                  alt=""
+                  width="50px"
+                  height="50px"
+                />
+              </a>
+              {% else %}
+              <b>N/A</b>
+              {% endif %}
+            </td>
+            <td class="text-center">{{carrera.directorCarreraWATT}}</td>
+            <td class="text-center">{{carrera.fechaCreacionCarreraWATT}}</td>
+            <td class="text-center">{{carrera.descripcionCarreraWATT}}</td>
+            <td class="text-center">
+              <a
+                href="/editarCarrera/{{carrera.idCarreraWATT}}"
+                class="btn btn-warning"
+              >
+                Editar
+              </a>
+              <a
+                href="javascript:void(0);"
+                type="button"
+                class="btn btn-danger"
+                onclick="eliminarCarrera(' /eliminarCarrera/{{carrera.idCarreraWATT}} ')"
+              >
+                Eliminar
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
+{%endblock%}
