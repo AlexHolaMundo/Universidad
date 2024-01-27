@@ -1,91 +1,95 @@
 {%extends './home.html'%} {%block contenido%} {% load static %}
 <div class="container m-4">
+  <h3 class="text-center">Registrar <em>Carrera</em></h3>
   <div class="row">
-    <h3 class="text-center">Registrar <em>Carrera</em></h3>
-    <form
-      id="formCarreraWATT"
-      action="/crearCarrera/"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      {% csrf_token %}
-      <div class="row">
-        <div class="col-md-6">
-          <fieldset>
-            <label for=""> Nombre</label>
-            <input
-              name="nombreCarreraWATT"
-              id="nombreCarreraWATT"
-              type="text"
-              class="form-control"
-              placeholder="Sistemas"
-              required=""
-            />
-          </fieldset>
+    <div class="col-md-12">
+      <form
+        id="formCarreraWATT"
+        action="/crearCarrera/"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset>
+              <label for=""> Nombre</label>
+              <input
+                name="nombreCarreraWATT"
+                id="nombreCarreraWATT"
+                type="text"
+                class="form-control"
+                placeholder="Sistemas"
+                required=""
+              />
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Logo</label>
+              <input
+                name="logoCarreraWATT"
+                id="logoCarreraWATT"
+                type="file"
+                accept="image/*"
+                class="form-control"
+                required=""
+              />
+            </fieldset>
+          </div>
         </div>
-        <div class="col-md-6">
-          <fieldset>
-            <label for="">Logo</label>
-            <input
-              name="logoCarreraWATT"
-              id="logoCarreraWATT"
-              type="file"
-              accept="image/*"
-              class="form-control"
-              required=""
-            />
-          </fieldset>
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Director</label>
+              <input
+                name="directorCarreraWATT"
+                id="directorCarreraWATT"
+                type="text"
+                class="form-control"
+                placeholder="Mcs. Juan Perez"
+                required=""
+              />
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Fecha de creacion</label>
+              <input
+                name="fechaCreacionCarreraWATT"
+                id="fechaCreacionCarreraWATT"
+                type="date"
+                class="form-control"
+                required=""
+              />
+            </fieldset>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <fieldset>
-            <label for="">Director</label>
-            <input
-              name="directorCarreraWATT"
-              id="directorCarreraWATT"
-              type="text"
-              class="form-control"
-              placeholder="Mcs. Juan Perez"
-              required=""
-            />
-          </fieldset>
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <label for="">Descripcion</label>
+              <textarea
+                name="descripcionCarreraWATT"
+                id="descripcionCarreraWATT"
+                rows="4"
+                class="form-control"
+                placeholder="Descripcion de la carrera"
+                required=""
+              ></textarea>
+            </fieldset>
+          </div>
         </div>
-        <div class="col-md-6">
+        <center class="col-md-12 m-4">
           <fieldset>
-            <label for="">Fecha de creacion</label>
-            <input
-              name="fechaCreacionCarreraWATT"
-              id="fechaCreacionCarreraWATT"
-              type="date"
-              class="form-control"
-              required=""
-            />
+            <button type="submit" id="" class="btn btn-success">
+              Registrar
+            </button>
+            <button type="reset" class="btn btn-info">Cancelar</button>
           </fieldset>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <fieldset>
-            <label for="">Descripcion</label>
-            <textarea
-              name="descripcionCarreraWATT"
-              id="descripcionCarreraWATT"
-              rows="4"
-              class="form-control"
-              placeholder="Descripcion de la carrera"
-              required=""
-            ></textarea>
-          </fieldset>
-        </div>
-      </div>
-      <center class="col-md-12 m-4">
-        <fieldset>
-          <button type="submit" id="" class="btn btn-success">Registrar</button>
-          <button type="reset" class="btn btn-danger">Cancelar</button>
-        </fieldset>
-      </center>
-    </form>
+        </center>
+      </form>
+    </div>
   </div>
   <div class="row">
     <div class="table-responsive">

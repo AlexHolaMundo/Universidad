@@ -1,0 +1,211 @@
+{%extends './home.html'%} {%block contenido%} {%load static%}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="right-content">
+        <div class="top-content">
+          <h3>Registrar <em>Asignaturas</em></h3>
+        </div>
+        <form
+          id="formAsignaturasWATT"
+          action="/crearAsignatura/"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset>
+                <label for="">Nombre</label>
+                <input
+                  name="nombreAsignaturaWATT"
+                  id="nombreAsignaturaWATT"
+                  type="text"
+                  class="form-control"
+                  placeholder="Desarrollo Web"
+                  required=""
+                />
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset>
+                <label for="">Creditos</label>
+                <input
+                  name="creditosAsignaturaWATT"
+                  id="creditosAsignaturaWATT"
+                  type="number"
+                  class="form-control"
+                  placeholder="35"
+                  required=""
+                />
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset>
+                <label for="">Fecha de Inicio</label>
+                <input
+                  name="fechaInicioAsignaturaWATT"
+                  id="fechaInicioAsignaturaWATT"
+                  type="date"
+                  class="form-control"
+                  required=""
+                />
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset>
+                <label for="">Fecha de Finalizacion</label>
+                <input
+                  name="fechaFinalizacionAsignaturaWATT"
+                  id="fechaFinalizacionAsignaturaWATT"
+                  type="date"
+                  class="form-control"
+                  required=""
+                />
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset>
+                <label for="">Profesor</label>
+                <input
+                  name="profesorAsignaturaWATT"
+                  id="profesorAsignaturaWATT"
+                  type="text"
+                  class="form-control"
+                  placeholder="Ing. Juan Perez"
+                  required=""
+                />
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset>
+                <label for="">Silabo</label>
+                <input
+                  name="silaboAsignaturaWATT"
+                  id="silaboAsignaturaWATT"
+                  type="file"
+                  accept="pdf/*"
+                  class="form-control"
+                  required=""
+                />
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset>
+                <label for="">Departamento</label>
+                <input
+                  name="departamentoAsignaturaWATT"
+                  id="departamentoAsignaturaWATT"
+                  type="text"
+                  class="form-control"
+                  placeholder="DESWEB / BDD"
+                  required=""
+                />
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset>
+                <label for="">Curso</label>
+                <select
+                  name="idCursoWATT"
+                  id="idCursoWATT"
+                  class="form-control"
+                >
+                  <option value="">-- Seleccione una opcion --</option>
+                  {% for curso in cursos %}
+                  <option value="{{curso.idCursoWATT}}">
+                    {{curso.nivelCursoWATT}}
+                  </option>
+                  {% endfor %}
+                </select>
+              </fieldset>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <fieldset>
+                <label for="">Descripcion</label>
+                <textarea
+                  name="descripcionAsignaturaWATT"
+                  id="descripcionAsignaturaWATT"
+                  type="text"
+                  rows="4"
+                  class="form-control"
+                  placeholder="Alguna descripcion"
+                  required=""
+                >
+                </textarea>
+              </fieldset>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <button type="submit" id="" class="button">Registrar</button>
+            </fieldset>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-7 col-xs-12">
+      <div class="left-content">
+        <div class="top-content">
+          <h3>Lista de <em>Asignaturas</em></h3>
+        </div>
+        <div class="bottom-content">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Creditos</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Finalizacion</th>
+                <th>Profesor</th>
+                <th>Silabo</th>
+                <th>Departamento</th>
+                <th>Nivel</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for asignatura in asignaturas %}
+              <tr>
+                <td>{{asignatura.idAsignaturaWATT}}</td>
+                <td>{{asignatura.nombreAsignaturaWATT}}</td>
+                <td>{{asignatura.creditosAsignaturaWATT}}</td>
+                <td>{{asignatura.fechaInicioAsignaturaWATT}}</td>
+                <td>{{asignatura.fechaFinalizacionAsignaturaWATT}}</td>
+                <td>{{asignatura.profesorAsignaturaWATT}}</td>
+                <td>{{asignatura.silaboAsignaturaWATT}}</td>
+                <td>{{asignatura.departamentoAsignaturaWATT}}</td>
+                <td>{{asignatura.nivelAsignaturaWATT}}</td>
+                <td>{{asignatura.descripcionAsignaturaWATT}}</td>
+                <td>
+                  <a
+                    href="/editarAsignatura/{{asignatura.idAsignaturaWATT}}"
+                    class="btn btn-warning"
+                    ><i class="mdi mdi-pencil"></i
+                  ></a>
+                  <a
+                    href="/eliminarAsignatura/{{asignatura.idAsignaturaWATT}}"
+                    class="btn btn-danger"
+                    ><i class="mdi mdi-delete"></i
+                  ></a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
