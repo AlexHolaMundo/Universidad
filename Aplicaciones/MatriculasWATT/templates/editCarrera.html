@@ -20,7 +20,7 @@
             name="idCarreraWATT"
             id="idCarreraWATT"
           />
-          <div class="col-md-6">
+          <div class="col-md-12">
             <fieldset>
               <label for=""> Nombre</label>
               <input
@@ -34,17 +34,32 @@
               />
             </fieldset>
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <fieldset>
-              <label for="">Logo</label>
+              <label for="">Logo Actual</label>
+              {% if carrera.logoCarreraWATT %}
+              <a href="{{carrera.logoCarreraWATT.url}}" target="_blank"
+                ><img
+                  src="{{carrera.logoCarreraWATT.url}}"
+                  alt="Logo de la carrera"
+                  class="img-fluid"
+              /></a>
+              {% else %}
+              <p>No hay logo</p>
+              {% endif %}
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Actualizar Logo (Opcional)</label>
               <input
                 name="logoCarreraWATT"
                 id="logoCarreraWATT"
-                value="{{carrera.logoCarreraWATT}}"
                 type="file"
                 accept="image/*"
                 class="form-control"
-                required=""
               />
             </fieldset>
           </div>

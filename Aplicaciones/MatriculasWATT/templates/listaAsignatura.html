@@ -147,63 +147,65 @@
       </form>
     </div>
     <div class="row">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="tableAsignaturas">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Nombre</th>
-              <th>Creditos</th>
-              <th>Fecha de Inicio</th>
-              <th>Fecha de Finalizacion</th>
-              <th>Profesor</th>
-              <th>Silabo</th>
-              <th>Departamento</th>
-              <th>Nivel</th>
-              <th>Descripcion</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for asignatura in asignaturas %}
-            <tr>
-              <td>{{asignatura.idAsignaturaWATT}}</td>
-              <td>{{asignatura.nombreAsignaturaWATT}}</td>
-              <td>{{asignatura.creditosAsignaturaWATT}}</td>
-              <td>{{asignatura.fechaInicioAsignaturaWATT}}</td>
-              <td>{{asignatura.fechaFinalizacionAsignaturaWATT}}</td>
-              <td>{{asignatura.profesorAsignaturaWATT}}</td>
-              <td>
-                <a
-                  href="{{asignatura.silaboAsignaturaWATT.url}}"
-                  class="btn btn-info"
-                  target="_blank"
-                >
-                  <i class="mdi mdi-eye"></i> Ver Silabo
-                </a>
-              </td>
-              <td>{{asignatura.departamentoAsignaturaWATT}}</td>
-              <td>{{asignatura.curso.nivelCursoWATT}}</td>
-              <td>{{asignatura.descripcionAsignaturaWATT}}</td>
-              <td>
-                <a
-                  href="/editarAsignatura/{{asignatura.idAsignaturaWATT}}"
-                  class="btn btn-warning"
-                  ><i class="mdi mdi-pencil"></i
-                ></a>
-                <a
-                  href="javascript:void(0);"
-                  type="button"
-                  class="btn btn-danger"
-                  onclick="eliminarAsignatura(' /eliminarAsignatura/{{asignatura.idAsignaturaWATT}} ')"
-                >
-                  <i class="mdi mdi-delete"></i>
-                </a>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+      <div class="container">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="tableAsignaturas">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Creditos</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Finalizacion</th>
+                <th>Profesor</th>
+                <th>Silabo</th>
+                <th>Departamento</th>
+                <th>Nivel</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for asignatura in asignaturas %}
+              <tr>
+                <td>{{asignatura.idAsignaturaWATT}}</td>
+                <td>{{asignatura.nombreAsignaturaWATT}}</td>
+                <td>{{asignatura.creditosAsignaturaWATT}}</td>
+                <td>{{asignatura.fechaInicioAsignaturaWATT}}</td>
+                <td>{{asignatura.fechaFinalizacionAsignaturaWATT}}</td>
+                <td>{{asignatura.profesorAsignaturaWATT}}</td>
+                <td>
+                  <a
+                    href="{{asignatura.silaboAsignaturaWATT.url}}"
+                    class="btn btn-info"
+                    target="_blank"
+                  >
+                    <i class="mdi mdi-eye"></i> Ver Silabo
+                  </a>
+                </td>
+                <td>{{asignatura.departamentoAsignaturaWATT}}</td>
+                <td>{{asignatura.curso.nivelCursoWATT}}</td>
+                <td>{{asignatura.descripcionAsignaturaWATT}}</td>
+                <td>
+                  <a
+                    href="/editarAsignatura/{{asignatura.idAsignaturaWATT}}"
+                    class="btn btn-warning"
+                    ><i class="mdi mdi-pencil"></i
+                  ></a>
+                  <a
+                    href="javascript:void(0);"
+                    type="button"
+                    class="btn btn-danger"
+                    onclick="eliminarAsignatura(' /eliminarAsignatura/{{asignatura.idAsignaturaWATT}} ')"
+                  >
+                    <i class="mdi mdi-delete"></i>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

@@ -116,21 +116,21 @@ def eliminarAsignatura(request, id):
 def editarCarrera(request, id):
     carreraEditar=carreraWATT.objects.get(idCarreraWATT=id)
     return render(request, 'editCarrera.html', {
-        'carreras': carreraEditar
+        'carrera': carreraEditar
     })
 
 def editarCurso(request, id):
     cursoEditar=cursoWATT.objects.get(idCursoWATT=id)
     carreraBdd=carreraWATT.objects.all()
     return render(request, 'editCurso.html', {
-        'cursos': cursoEditar, 'carreras': carreraBdd
+        'curso': cursoEditar, 'carreras': carreraBdd
     })
 
 def editarAsignatura(request, id):
     asignaturaEditar=asignaturaWATT.objects.get(idAsignaturaWATT=id)
     cursoBdd=cursoWATT.objects.all()
     return render(request, 'editAsignatura.html', {
-        'asignaturas': asignaturaEditar, 'cursos': cursoBdd
+        'asignatura': asignaturaEditar, 'cursos': cursoBdd
     })
 
 

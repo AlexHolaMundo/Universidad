@@ -16,9 +16,9 @@ urlpatterns = [
     path('editarCarrera/<int:id>', views.editarCarrera),
     path('editarCurso/<int:id>', views.editarCurso),
     path('editarAsignatura/<int:id>', views.editarAsignatura),
-    path('actualizarCarrera/<int:id>', views.actualizarCarrera),
-    path('actualizarCurso/<int:id>', views.actualizarCurso),
-    path('actualizarAsignatura/<int:id>', views.actualizarAsignatura),
+    path('actualizarCarrera/', views.actualizarCarrera),
+    path('actualizarCurso/', views.actualizarCurso),
+    path('actualizarAsignatura/', views.actualizarAsignatura),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
