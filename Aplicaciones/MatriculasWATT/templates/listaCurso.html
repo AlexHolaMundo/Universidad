@@ -96,64 +96,61 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12 col-xs-12">
-      <div class="table-responsive">
-        <table class="table table-light bg-white" id="tableCursos">
-          <thead>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Nivel</th>
-              <th scope="col">Descripcion</th>
-              <th scope="col">Aula</th>
-              <th scope="col">Horario</th>
-              <th scope="col">Curso</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for curso in cursos %}
-            <tr>
-              <td class="text-center">{{curso.idCursoWATT}}</td>
-              <td class="text-center">{{curso.nivelCursoWATT}}</td>
-              <td class="text-center">{{curso.descripcionCursoWATT}}</td>
-              <td class="text-center">{{curso.aulaCursoWATT}}</td>
-              <td class="text-center">
-                {% if curso.horarioCursoWATT %}
-                <img
-                  src="{{curso.horarioCursoWATT.url}}"
-                  alt=""
-                  width="50px"
-                  height="50px"
-                  target="_blank"
-                />
-                {% else %}
-                <b>N/A</b>
-                {% endif %}
-              </td>
-              <td class="text-center">
-                {{curso.carreraWATT.nombreCarreraWATT}}
-              </td>
-              <td class="text-center">
-                <a
-                  href="/editarCarrera/{{curso.idCursoWATT}}"
-                  class="btn btn-warning"
-                >
-                  Editar
-                </a>
-                <a
-                  href="javascript:void(0);"
-                  type="button"
-                  class="btn btn-danger"
-                  onclick="eliminarCarrera(' /eliminarCarrera/{{curso.idCursoWATT}} ')"
-                >
-                  Eliminar
-                </a>
-              </td>
-            </tr>
+    <div class="table-responsive">
+      <table class="table table-bordered" id="tableCursos">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nivel</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Aula</th>
+            <th scope="col">Horario</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for curso in cursos %}
+          <tr>
+            <td class="text-center">{{curso.idCursoWATT}}</td>
+            <td class="text-center">{{curso.nivelCursoWATT}}</td>
+            <td class="text-center">{{curso.descripcionCursoWATT}}</td>
+            <td class="text-center">{{curso.aulaCursoWATT}}</td>
+            <td class="text-center">
+              {% if curso.horarioCursoWATT %}
+              <img
+                src="{{curso.horarioCursoWATT.url}}"
+                alt=""
+                width="50px"
+                height="50px"
+                target="_blank"
+              />
+              {% else %}
+              <b>N/A</b>
+              {% endif %}
+            </td>
+            <td class="text-center">{{curso.carrera.nombreCarreraWATT}}</td>
+            <td class="text-center">
+              <a
+                href="/editarCarrera/{{curso.idCursoWATT}}"
+                class="btn btn-warning"
+              >
+                <i class="mdi mdi-pencil"></i>
+              </a>
+              <a
+                href="javascript:void(0);"
+                type="button"
+                class="btn btn-danger"
+                onclick="eliminarCarrera(' /eliminarCarrera/{{curso.idCursoWATT}} ')"
+              >
+                <i class="mdi mdi-delete"></i>
+              </a>
+            </td>
+          </tr>
 
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

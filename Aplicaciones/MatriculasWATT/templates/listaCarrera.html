@@ -93,7 +93,7 @@
   </div>
   <div class="row">
     <div class="table-responsive">
-      <table class="table table-light bg-white" id="tableCarreras">
+      <table class="table table-bordered" id="tableCarreras">
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -132,7 +132,7 @@
                 href="/editarCarrera/{{carrera.idCarreraWATT}}"
                 class="btn btn-warning"
               >
-                Editar
+                <i class="mdi mdi-pencil"></i>
               </a>
               <a
                 href="javascript:void(0);"
@@ -140,7 +140,7 @@
                 class="btn btn-danger"
                 onclick="eliminarCarrera(' /eliminarCarrera/{{carrera.idCarreraWATT}} ')"
               >
-                Eliminar
+                <i class="mdi mdi-delete"></i>
               </a>
             </td>
           </tr>
