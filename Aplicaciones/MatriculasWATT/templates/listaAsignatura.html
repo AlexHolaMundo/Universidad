@@ -174,7 +174,15 @@
               <td>{{asignatura.fechaInicioAsignaturaWATT}}</td>
               <td>{{asignatura.fechaFinalizacionAsignaturaWATT}}</td>
               <td>{{asignatura.profesorAsignaturaWATT}}</td>
-              <td>{{asignatura.silaboAsignaturaWATT}}</td>
+              <td>
+                <a
+                  href="{{asignatura.idAsignaturaWATT}}"
+                  class="btn btn-info"
+                  target="_blank"
+                >
+                  <i class="mdi mdi-eye"></i> Ver Silabo
+                </a>
+              </td>
               <td>{{asignatura.departamentoAsignaturaWATT}}</td>
               <td>{{asignatura.curso.nivelCursoWATT}}</td>
               <td>{{asignatura.descripcionAsignaturaWATT}}</td>
@@ -185,10 +193,13 @@
                   ><i class="mdi mdi-pencil"></i
                 ></a>
                 <a
-                  href="/eliminarAsignatura/{{asignatura.idAsignaturaWATT}}"
+                  href="javascript:void(0);"
+                  type="button"
                   class="btn btn-danger"
-                  ><i class="mdi mdi-delete"></i
-                ></a>
+                  onclick="eliminarAsignatura(' /eliminarAsignatura/{{asignatura.idAsignaturaWATT}} ')"
+                >
+                  <i class="mdi mdi-delete"></i>
+                </a>
               </td>
             </tr>
             {% endfor %}
