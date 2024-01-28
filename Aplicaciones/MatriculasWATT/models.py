@@ -4,7 +4,7 @@ from django.db import models
 class carreraWATT(models.Model):
     idCarreraWATT = models.AutoField(primary_key=True)
     nombreCarreraWATT = models.CharField(max_length=50)
-    logoCarreraWATT = models.ImageField(upload_to='logos',null=True, blank=True)
+    logoCarreraWATT = models.FileField(upload_to='logos',null=True, blank=True)
     directorCarreraWATT = models.CharField(max_length=50)
     fechaCreacionCarreraWATT = models.DateField()
     descripcionCarreraWATT = models.CharField(max_length=50)

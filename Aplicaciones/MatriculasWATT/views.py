@@ -115,21 +115,21 @@ def eliminarAsignatura(request, id):
 
 def editarCarrera(request, id):
     carreraEditar=carreraWATT.objects.get(idCarreraWATT=id)
-    return render(request, 'editarCarrera.html', {
+    return render(request, 'editCarrera.html', {
         'carreras': carreraEditar
     })
 
 def editarCurso(request, id):
     cursoEditar=cursoWATT.objects.get(idCursoWATT=id)
     carreraBdd=carreraWATT.objects.all()
-    return render(request, 'editarCurso.html', {
+    return render(request, 'editCurso.html', {
         'cursos': cursoEditar, 'carreras': carreraBdd
     })
 
 def editarAsignatura(request, id):
     asignaturaEditar=asignaturaWATT.objects.get(idAsignaturaWATT=id)
     cursoBdd=cursoWATT.objects.all()
-    return render(request, 'editarAsignatura.html', {
+    return render(request, 'editAsignatura.html', {
         'asignaturas': asignaturaEditar, 'cursos': cursoBdd
     })
 
@@ -137,7 +137,7 @@ def editarAsignatura(request, id):
 def actualizarCarrera(request):
     id = request.POST['idCarreraWATT']
     nombreCarreraWATT = request.POST['nombreCarreraWATT']
-    logoCarreraWATT = request.FILES.get['logoCarreraWATT']
+    logoCarreraWATT = request.FILES.get('logoCarreraWATT')
     directorCarreraWATT = request.POST['directorCarreraWATT']
     fechaCreacionCarreraWATT = request.POST['fechaCreacionCarreraWATT']
     descripcionCarreraWATT = request.POST['descripcionCarreraWATT']
@@ -159,7 +159,7 @@ def actualizarCurso(request):
     nivelCursoWATT = request.POST['nivelCursoWATT']
     descripcionCursoWATT = request.POST['descripcionCursoWATT']
     aulaCursoWATT = request.POST['aulaCursoWATT']
-    horarioCursoWATT = request.FILES.get['horarioCursoWATT']
+    horarioCursoWATT = request.FILES.get('horarioCursoWATT')
     carreraWATT = request.POST['carreraWATT']
     carreraSeleccionadaWATT = carreraWATT.objects.get(idCarreraWATT=carreraWATT)
 

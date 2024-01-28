@@ -1,0 +1,110 @@
+{%extends './home.html'%} {%block contenido%} {%load static%}
+<div class="container m-4">
+  <h3 class="text-center">Registrar <em>Carrera</em></h3>
+  <div class="row">
+    <div class="col-md-12">
+      <form
+        id="formCarreraWATT"
+        action="/actualizarCarrera/"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="row">
+          <input
+            type="hidden"
+            required
+            class="form-control m-3"
+            placeholder="ID"
+            value="{{carrera.idCarreraWATT}}"
+            name="idCarreraWATT"
+            id="idCarreraWATT"
+          />
+          <div class="col-md-6">
+            <fieldset>
+              <label for=""> Nombre</label>
+              <input
+                name="nombreCarreraWATT"
+                id="nombreCarreraWATT"
+                value="{{carrera.nombreCarreraWATT}}"
+                type="text"
+                class="form-control"
+                placeholder="Sistemas"
+                required=""
+              />
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Logo</label>
+              <input
+                name="logoCarreraWATT"
+                id="logoCarreraWATT"
+                value="{{carrera.logoCarreraWATT}}"
+                type="file"
+                accept="image/*"
+                class="form-control"
+                required=""
+              />
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Director</label>
+              <input
+                name="directorCarreraWATT"
+                id="directorCarreraWATT"
+                value="{{carrera.directorCarreraWATT}}"
+                type="text"
+                class="form-control"
+                placeholder="Mcs. Juan Perez"
+                required=""
+              />
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Fecha de creacion</label>
+              <input
+                name="fechaCreacionCarreraWATT"
+                id="fechaCreacionCarreraWATT"
+                value="{{carrera.fechaCreacionCarreraWATT | date:'Y-m-d'}}"
+                type="date"
+                class="form-control"
+                required=""
+              />
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <label for="">Descripcion</label>
+              <textarea
+                name="descripcionCarreraWATT"
+                id="descripcionCarreraWATT"
+                rows="4"
+                class="form-control"
+                placeholder="Descripcion de la carrera"
+                required=""
+              >
+{{carrera.descripcionCarreraWATT}}</textarea
+              >
+            </fieldset>
+          </div>
+        </div>
+        <center class="col-md-12 m-4">
+          <fieldset>
+            <button type="submit" id="" class="btn btn-success">
+              Actualizar
+            </button>
+            <a href="/listaCarrera" class="btn btn-info">Cancelar</a>
+          </fieldset>
+        </center>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock contenido %}

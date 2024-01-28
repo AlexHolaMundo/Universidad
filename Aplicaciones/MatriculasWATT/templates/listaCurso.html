@@ -81,8 +81,7 @@
                 rows="4"
                 placeholder="Alguna descripcion del curso"
                 required=""
-              >
-              </textarea>
+              ></textarea>
             </fieldset>
           </div>
         </div>
@@ -118,13 +117,15 @@
             <td class="text-center">{{curso.aulaCursoWATT}}</td>
             <td class="text-center">
               {% if curso.horarioCursoWATT %}
-              <img
-                src="{{curso.horarioCursoWATT.url}}"
-                alt=""
-                width="50px"
-                height="50px"
-                target="_blank"
-              />
+              <a href="{{curso.horarioCursoWATT.url}}" target="_blank">
+                <img
+                  src="{{curso.horarioCursoWATT.url}}"
+                  alt=""
+                  width="50px"
+                  height="50px"
+                  target="_blank"
+                />
+              </a>
               {% else %}
               <b>N/A</b>
               {% endif %}
@@ -132,7 +133,7 @@
             <td class="text-center">{{curso.carrera.nombreCarreraWATT}}</td>
             <td class="text-center">
               <a
-                href="/editarCarrera/{{curso.idCursoWATT}}"
+                href="/editarCurso/{{curso.idCursoWATT}}"
                 class="btn btn-warning"
               >
                 <i class="mdi mdi-pencil"></i>
