@@ -1,11 +1,11 @@
-//Paginacion y filtrado de la tabla de provincias
+//Paginacion y filtrado de la tabla de carreras
 $(document).ready(function () {
   let table = $('#tableCarreras').DataTable({
     searching: true,
     fixedHeader: true,
     paging: true,
     info: true,
-    pageLength: 5,
+    pageLength: 3,
     language: {
       url: 'https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json',
     },
@@ -37,21 +37,21 @@ $(document).ready(function () {
     ],
     columnDefs: [
       {
-        targets: [5],
+        targets: [6],
         className: 'acciones-column',
       },
     ],
   })
 })
 
-//Paginacion y filtrado de la tabla de provincias
+//Paginacion y filtrado de la tabla de Asignaturas
 $(document).ready(function () {
   let table = $('#tableAsignaturas').DataTable({
     searching: true,
     fixedHeader: true,
     paging: true,
     info: true,
-    pageLength: 5,
+    pageLength: 3,
     language: {
       url: 'https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json',
     },
@@ -83,7 +83,7 @@ $(document).ready(function () {
     ],
     columnDefs: [
       {
-        targets: [5],
+        targets: [9],
         className: 'acciones-column',
       },
     ],
@@ -96,7 +96,7 @@ $(document).ready(function () {
     fixedHeader: true,
     paging: true,
     info: true,
-    pageLength: 5,
+    pageLength: 3,
     language: {
       url: 'https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json',
     },
@@ -128,7 +128,7 @@ $(document).ready(function () {
     ],
     columnDefs: [
       {
-        targets: [5],
+        targets: [6],
         className: 'acciones-column',
       },
     ],
