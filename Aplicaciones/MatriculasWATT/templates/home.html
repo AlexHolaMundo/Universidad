@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -9,6 +9,59 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>UniversidadWATT</title>
+    <!--Importacion de cdn jquery-->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Importacion de data tables-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"
+    />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"
+    ></script>
+
+    <!--Importacion de Librerias-->
+    <script src="{% static 'libraries/jquery-validate/jquery.validate.js'%}"></script>
+    <!-- plugins:js -->
+    <!--
+
+      <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
+    -->
+    <!-- endinject -->
+    <!-- inject:js -->
+    <!----
+    <script src="{% static 'js/off-canvas.js' %}"></script>
+    <script src="{% static 'js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'js/misc.js' %}"></script>
+    <script src="{% static 'js/settings.js' %}"></script>
+    <script src="{% static 'js/todolist.js' %}"></script>-->
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{% static 'js/dashboard.js' %}"></script>
     <!-- plugins:css -->
     <link
       rel="stylesheet"
@@ -63,9 +116,13 @@
         <div
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
-          <a class="sidebar-brand brand-logo" href="/"
-            ><img src="{%static 'images/logo.svg'%}" alt="logo"
-          /></a>
+          <a
+            class="sidebar-brand brand-logo"
+            style="color: #ffffff"
+            href="/enviar_correo"
+            >Universidad
+          </a>
+
           <a class="sidebar-brand brand-logo-mini" href="/"
             ><img src="{%static 'images/logo-mini.svg'%}" alt="logo"
           /></a>
@@ -139,29 +196,10 @@
       iziToast.success({
         title: 'ATENCION',
         message: '{{message}}',
-        position: 'topRight',
+        position: 'topLeft',
       })
     </script>
     {% endfor %} {% endif %}
-
-    <!-- plugins:js -->
-    <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="{% static 'vendors/chart.js/Chart.min.js' %}"></script>
-    <script src="{% static 'vendors/progressbar.js/progressbar.min.js' %}"></script>
-    <script src="{% static 'vendors/jvectormap/jquery-jvectormap.min.js' %}"></script>
-    <script src="{% static 'vendors/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
-    <script src="{% static 'vendors/owl-carousel-2/owl.carousel.min.js' %}"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="{% static 'js/off-canvas.js' %}"></script>
-    <script src="{% static 'js/hoverable-collapse.js' %}"></script>
-    <script src="{% static 'js/misc.js' %}"></script>
-    <script src="{% static 'js/settings.js' %}"></script>
-    <script src="{% static 'js/todolist.js' %}"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="{% static 'js/dashboard.js' %}"></script>
   </body>
+  <script src="{% static 'js/pagination.js' %}"></script>
 </html>

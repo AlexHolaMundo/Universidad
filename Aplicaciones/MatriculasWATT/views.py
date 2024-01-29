@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'correo.html')
 
 def listaCarrera(request):
     carreraBdd=carreraWATT.objects.all()
