@@ -109,7 +109,12 @@
           <div class="col-md-6">
             <fieldset>
               <label for="">Curso</label>
-              <select name="idCursoWATT" id="idCursoWATT" class="form-control">
+              <select
+                name="idCursoWATT"
+                id="idCursoWATT"
+                class="form-control"
+                required
+              >
                 <option value="">-- Seleccione una opcion --</option>
                 {% for curso in cursos %}
                 <option value="{{curso.idCursoWATT}}">
@@ -161,7 +166,7 @@
                 <th>Silabo</th>
                 <th>Departamento</th>
                 <th>Nivel</th>
-                <th>Descripcion</th>
+                <th class="w-50">Descripcion</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -175,6 +180,7 @@
                 <td>{{asignatura.fechaFinalizacionAsignaturaWATT}}</td>
                 <td>{{asignatura.profesorAsignaturaWATT}}</td>
                 <td>
+                  {% if asignatura.silaboAsignaturaWATT%}
                   <a
                     href="{{asignatura.silaboAsignaturaWATT.url}}"
                     class="btn btn-info"
@@ -182,10 +188,15 @@
                   >
                     <i class="mdi mdi-eye"></i> Ver Silabo
                   </a>
+                  {% else %}
+                  <a href="javascript:void(0);" class="btn btn-danger" disabled>
+                    <i class="mdi mdi-eye"></i> Sin Silabo
+                  </a>
+                  {% endif %}
                 </td>
                 <td>{{asignatura.departamentoAsignaturaWATT}}</td>
                 <td>{{asignatura.curso.nivelCursoWATT}}</td>
-                <td>{{asignatura.descripcionAsignaturaWATT}}</td>
+                <td class="w-50">{{asignatura.descripcionAsignaturaWATT}}</td>
                 <td>
                   <a
                     href="/editarAsignatura/{{asignatura.idAsignaturaWATT}}"

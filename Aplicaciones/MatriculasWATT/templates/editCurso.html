@@ -52,7 +52,22 @@
         <div class="row">
           <div class="col-md-6">
             <fieldset>
-              <label for="">Horario</label>
+              <label for="">Horario Actual</label>
+              {% if curso.horarioCursoWATT %}
+              <a href="{{curso.horarioCursoWATT.url}}" target="_blank"
+                ><img
+                  src="{{curso.horarioCursoWATT.url}}"
+                  alt="Horario"
+                  class="img-fluid"
+              /></a>
+              {% else %}
+              <p>No hay Horario</p>
+              {% endif %}
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset>
+              <label for="">Actualizar horario (Opcional)</label>
               <input
                 name="horarioCursoWATT"
                 id="horarioCursoWATT"
@@ -64,7 +79,7 @@
               />
             </fieldset>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <fieldset>
               <label for="">Curso</label>
               <select
@@ -93,18 +108,24 @@
                 rows="4"
                 placeholder="Alguna descripcion del curso"
                 required=""
-              ></textarea>
+              >
+{{curso.descripcionCursoWATT}}</textarea
+              >
             </fieldset>
           </div>
         </div>
         <div class="col-md-12">
           <center class="m-3">
-            <button type="submit" class="btn btn-success">Registrar</button>
-            <button type="reset" class="btn btn-info">Cancelar</button>
+            <button type="submit" class="btn btn-success">Actualizar</button>
+            <a class="btn btn-info" href="/listaCurso">Cancelar</a>
           </center>
         </div>
       </form>
     </div>
   </div>
 </div>
+<script>
+  document.getElementById('idCarreraWATT').value =
+    '{{curso.carrera.idCarreraWATT}}'
+</script>
 {% endblock %}

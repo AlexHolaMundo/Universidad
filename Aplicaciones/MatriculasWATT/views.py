@@ -160,8 +160,9 @@ def actualizarCurso(request):
     descripcionCursoWATT = request.POST['descripcionCursoWATT']
     aulaCursoWATT = request.POST['aulaCursoWATT']
     horarioCursoWATT = request.FILES.get('horarioCursoWATT')
-    carreraWATT = request.POST['carreraWATT']
-    carreraSeleccionadaWATT = carreraWATT.objects.get(idCarreraWATT=carreraWATT)
+
+    carrera = request.POST['idCarreraWATT']
+    carreraSeleccionadaWATT = carreraWATT.objects.get(idCarreraWATT=carrera)
 
     cursoActualizar=cursoWATT(
         idCursoWATT=id,
@@ -169,7 +170,7 @@ def actualizarCurso(request):
         descripcionCursoWATT=descripcionCursoWATT,
         aulaCursoWATT=aulaCursoWATT,
         horarioCursoWATT=horarioCursoWATT,
-        carreraWATT=carreraSeleccionadaWATT
+        carrera=carreraSeleccionadaWATT
     )
     cursoActualizar.save()
     messages.success(request, 'Curso actualizado correctamente')
@@ -182,11 +183,11 @@ def actualizarAsignatura(request):
     fechaInicioAsignaturaWATT = request.POST['fechaInicioAsignaturaWATT']
     fechaFinalizacionAsignaturaWATT = request.POST['fechaFinalizacionAsignaturaWATT']
     profesorAsignaturaWATT = request.POST['profesorAsignaturaWATT']
-    silaboAsignaturaWATT = request.FILES.get['silaboAsignaturaWATT']
+    silaboAsignaturaWATT = request.FILES.get('silaboAsignaturaWATT')
     descripcionAsignaturaWATT = request.POST['descripcionAsignaturaWATT']
     departamentoAsignaturaWATT = request.POST['departamentoAsignaturaWATT']
-    cursoWATT = request.POST['cursoWATT']
-    cursoSeleccionadoWATT = cursoWATT.objects.get(idCursoWATT=cursoWATT)
+    curso = request.POST['idCursoWATT']
+    cursoSeleccionadoWATT = cursoWATT.objects.get(idCursoWATT=curso)
 
     asignaturaActualizar=asignaturaWATT(
         idAsignaturaWATT=id,
@@ -198,7 +199,7 @@ def actualizarAsignatura(request):
         silaboAsignaturaWATT=silaboAsignaturaWATT,
         descripcionAsignaturaWATT=descripcionAsignaturaWATT,
         departamentoAsignaturaWATT=departamentoAsignaturaWATT,
-        cursoWATT=cursoSeleccionadoWATT
+        curso=cursoSeleccionadoWATT
     )
     asignaturaActualizar.save()
     messages.success(request, 'Asignatura actualizada correctamente')
