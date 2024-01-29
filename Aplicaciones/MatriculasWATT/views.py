@@ -204,3 +204,15 @@ def actualizarAsignatura(request):
     asignaturaActualizar.save()
     messages.success(request, 'Asignatura actualizada correctamente')
     return redirect('/listaAsignatura')
+
+def enviar_correo(request):
+    if request.method == 'POST':
+        destinatario = request.POST.get('destinatario')
+        asunto = request.POST.get('asunto')
+        cuerpo = request.POST.get('cuerpo')
+
+        send_mail(asunto, cuerpo, settings.EMAIL_HOST_USER, [destinatario], fail_silently=False)
+
+        messages.success(request, 'Correo enviado correctamente')
+        return HttpResponseRedirect('/enviar_correo')
+    return render(request, 'correo.html')

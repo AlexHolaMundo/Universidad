@@ -19,6 +19,8 @@ urlpatterns = [
     path('actualizarCarrera/', views.actualizarCarrera),
     path('actualizarCurso/', views.actualizarCurso),
     path('actualizarAsignatura/', views.actualizarAsignatura),
+
+    path('enviar_correo/', views.enviar_correo),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

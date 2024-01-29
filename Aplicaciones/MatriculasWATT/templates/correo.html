@@ -1,0 +1,39 @@
+{%extends "./home.html"%} {%load static %} {% block contenido %}
+
+<div class="container">
+  <h3 class="text-center">Formulario de <em>Contacto</em></h3>
+  <form action="/enviar_correo/" class="border m-4 p-4" method="POST">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-6">
+        <label for="">Direccion de correo electronico</label>
+        <input
+          type="email"
+          class="form-control"
+          name="destinatario"
+          id="destinatario"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="">Asunto</label>
+        <input type="text" class="form-control" name="asunto" id="asunto" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="">Mensaje</label>
+        <textarea
+          type="text"
+          class="form-control"
+          name="cuerpo"
+          id="cuerpo"
+        ></textarea>
+      </div>
+    </div>
+    <center class="m-2">
+      <button type="submit" class="btn btn-outline-success">Enviar</button>
+      <button type="reset" class="btn btn-outline-info">Cancelar</button>
+    </center>
+  </form>
+</div>
+{% endblock %}
