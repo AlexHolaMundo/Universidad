@@ -245,3 +245,43 @@ $(document).ready(function () {
     },
   })
 })
+
+$(document).ready(function () {
+  $.validator.addMethod(
+    'lettersonly',
+    function (value, element) {
+      return this.optional(element) || /^[a-zA-Z\s]*$/.test(value)
+    },
+    'Solo se permiten letras en este campo'
+  )
+  $('#formCorreo').validate({
+    rules: {
+      destinatario: {
+        required: true,
+        email: true,
+      },
+      asunto: {
+        required: true,
+        lettersonly: true,
+      },
+      cuerpo: {
+        required: true,
+        lettersonly: true,
+      },
+    },
+    messages: {
+      destinatario: {
+        required: 'El destinatario es obligatorio',
+        email: 'El formato del correo no es válido',
+      },
+      asunto: {
+        required: 'El asunto es obligatorio',
+        lettersonly: 'Solo se permiten letras en este campo',
+      },
+      cuerpo: {
+        required: 'El cuerpo del correo es obligatorio',
+        lettersonly: 'Solo se permiten letras en este campo',
+      },
+    },
+  })
+})

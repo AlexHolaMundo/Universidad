@@ -2,7 +2,12 @@
 
 <div class="container">
   <h3 class="text-center">Formulario de <em>Contacto</em></h3>
-  <form action="/enviar_correo/" class="border m-4 p-4" method="POST">
+  <form
+    action="/enviar_correo/"
+    class="border m-4 p-4"
+    method="POST"
+    id="formCorreo"
+  >
     {% csrf_token %}
     <div class="row">
       <div class="col-md-6">
