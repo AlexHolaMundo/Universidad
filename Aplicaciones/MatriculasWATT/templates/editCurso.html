@@ -85,7 +85,9 @@
               <select
                 name="idCarreraWATT"
                 id="idCarreraWATT"
-                class="form-control"
+                data-live-search="true"
+                data-live-search-style="startsWith"
+                class="form-control selectpicker"
               >
                 <option value="">-- Seleccione una opcion --</option>
                 {% for carrera in carreras %}

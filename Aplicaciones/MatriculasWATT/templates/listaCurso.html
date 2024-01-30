@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <fieldset>
               <label for="">Horario</label>
               <input
@@ -52,9 +52,11 @@
               />
             </fieldset>
           </div>
-          <div class="col-md-6">
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <fieldset>
-              <label for="">Curso</label>
+              <label for="">Carrera</label>
               <select
                 name="idCarreraWATT"
                 id="idCarreraWATT"
@@ -104,7 +106,7 @@
             <th scope="col">Descripcion</th>
             <th scope="col">Aula</th>
             <th scope="col">Horario</th>
-            <th scope="col">Curso</th>
+            <th scope="col">Carrera</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -154,6 +156,92 @@
       </table>
     </div>
   </div>
+
+  <div class="container">
+    <center>
+      <button
+        id="toggleChartButton"
+        onclick="toggleChart()"
+        class="btn btn-info"
+      >
+        Mostrar/ocultar gráfico
+      </button>
+    </center>
+    <div
+      id="chartContainer"
+      style="
+        margin: auto;
+        border: 2px solid black;
+        padding: 10px;
+        display: none;
+        margin: 50px;
+      "
+    >
+      <canvas id="chartCurso"></canvas>
+    </div>
+  </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const ctx = document.getElementById('chartCurso')
+
+    const nivelSet = new Set()
+    const niveles = {}
+
+    ;`{% for carrera in carreras %}`
+    nivelSet.add('{{ carrera.nivelCursoWATT }}')
+    if (!niveles['{{ carrera.nivelCursoWATT }}']) {
+      niveles['{{ carrera.nivelCursoWATT }}'] = 1
+    } else {
+      niveles['{{ carrera.nivelCursoWATT }}'] += 1
+    }
+    ;`{% endfor %}`
+
+    const nivelesArray = Array.from(nivelSet)
+    const posiciones = nivelesArray.map((tipo, index) => ({
+      x: index,
+      y: niveles[tipo] || 0,
+    }))
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: nivelesArray,
+        datasets: [
+          {
+            label: 'Cantidad de niveles',
+            data: posiciones.map((posicion) => posicion.y),
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'category',
+            position: 'bottom',
+          },
+          y: {
+            beginAtZero: true,
+            max: 10,
+            stepSize: 1,
+          },
+        },
+      },
+    })
+
+    window.toggleChart = function () {
+      const chartContainer = document.getElementById('chartContainer')
+
+      if (chartContainer.style.display === 'none') {
+        chartContainer.style.display = 'block'
+      } else {
+        chartContainer.style.display = 'none'
+      }
+    }
+  })
+</script>
 
 {% endblock %}

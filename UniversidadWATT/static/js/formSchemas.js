@@ -85,8 +85,8 @@ $(document).ready(function () {
       },
       nivelCursoWATT: {
         required: true,
-        minlength: 10,
-        maxlength: 10,
+        minlength: 1,
+        maxlength: 4,
       },
       descripcionCursoWATT: {
         required: true,
@@ -96,7 +96,8 @@ $(document).ready(function () {
       },
       aulaCursoWATT: {
         required: true,
-        lettersonly: true,
+        minlength: 1,
+        maxlength: 4,
       },
       horarioCursoWATT: {
         required: true,
@@ -113,8 +114,8 @@ $(document).ready(function () {
       },
       nivelCursoWATT: {
         required: 'El nivel del curso es obligatorio',
-        minlength: 'El nivel del curso debe tener al menos 10 caracteres',
-        maxlength: 'El nivel del curso debe tener como máximo 10 caracteres',
+        minlength: 'El nivel del curso debe tener al menos 1 caracteres',
+        maxlength: 'El nivel del curso debe tener como máximo 4 caracteres',
       },
       descripcionCursoWATT: {
         required: 'La descripción del curso es obligatoria',
@@ -125,7 +126,8 @@ $(document).ready(function () {
       },
       aulaCursoWATT: {
         required: 'El aula del curso es obligatoria',
-        lettersonly: 'Solo se permiten letras en este campo',
+        minlength: 'El aula tiene como minimo 1 caracteres',
+        maxlength: 'El aula tiene como maximo 4 caracteres',
       },
       horarioCursoWATT: {
         required: 'El horario del curso es obligatorio',
