@@ -183,21 +183,21 @@
                 <td>{{asignatura.fechaInicioAsignaturaWATT}}</td>
                 <td>{{asignatura.fechaFinalizacionAsignaturaWATT}}</td>
                 <td>{{asignatura.profesorAsignaturaWATT}}</td>
-                <td>
-                  {% if asignatura.silaboAsignaturaWATT%}
-                  <a
-                    href="{{asignatura.silaboAsignaturaWATT.url}}"
-                    class="btn btn-info"
-                    target="_blank"
-                  >
-                    <i class="mdi mdi-eye"></i> Ver Silabo
-                  </a>
-                  {% else %}
-                  <a href="javascript:void(0);" class="btn btn-danger" disabled>
-                    <i class="mdi mdi-eye"></i> Sin Silabo
-                  </a>
-                  {% endif %}
-                </td>
+                  <td>
+                    {% if asignatura.silaboAsignaturaWATT%}
+                    <a
+                      href="{{asignatura.silaboAsignaturaWATT.url}}"
+                      class="btn btn-info"
+                      target="_blank"
+                    >
+                      <i class="mdi mdi-eye"></i> Ver Silabo
+                    </a>
+                    {% else %}
+                    <a href="javascript:void(0);" class="btn btn-danger" disabled>
+                      <i class="mdi mdi-eye"></i> Sin Silabo
+                    </a>
+                    {% endif %}
+                  </td>
                 <td>{{asignatura.departamentoAsignaturaWATT}}</td>
                 <td>{{asignatura.curso.nivelCursoWATT}}</td>
                 <td class="w-50">{{asignatura.descripcionAsignaturaWATT}}</td>
@@ -250,67 +250,6 @@
   </div>
 </div>
 </div>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('chartAsignatura')
 
-    const asignaturaSet = new Set()
-    const asignaturas = {}
-
-    ;`{% for asignatura in asignaturas %}`
-    asignaturaSet.add('{{ asignatura.nombreAsignaturaWATT }}')
-    if (!asignaturas['{{ asignatura.nombreAsignaturaWATT }}']) {
-      asignaturas['{{ asignatura.nombreAsignaturaWATT }}'] = 1
-    } else {
-      asignaturas['{{ asignatura.nombreAsignaturaWATT }}'] += 1
-    }
-    ;`{% endfor %}`
-
-    const asignaturasArray = Array.from(asignaturaSet)
-    const posiciones = asignaturasArray.map((tipo, index) => ({
-      x: index,
-      y: asignaturas[tipo] || 0,
-    }))
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: asignaturasArray,
-        datasets: [
-          {
-            label: 'Cantidad de asignaturas',
-            data: posiciones.map((posicion) => posicion.y),
-            backgroundColor: 'rgba(75, 192, 192, 0.5)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          x: {
-            type: 'category',
-            position: 'bottom',
-          },
-          y: {
-            beginAtZero: true,
-            max: 10,
-            stepSize: 1,
-          },
-        },
-      },
-    })
-
-    window.toggleChart = function () {
-      const chartContainer = document.getElementById('chartContainer')
-
-      if (chartContainer.style.display === 'none') {
-        chartContainer.style.display = 'block'
-      } else {
-        chartContainer.style.display = 'none'
-      }
-    }
-  })
-</script>
 
 {%endblock%}

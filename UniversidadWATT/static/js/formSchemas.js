@@ -14,8 +14,8 @@ $(document).ready(function () {
       nombreCarreraWATT: {
         required: true,
         lettersonly: true,
-        minlength: 10,
-        maxlength: 10,
+        minlength: 5,
+        maxlength: 50,
       },
       logoCarreraWATT: {
         required: true,
@@ -43,9 +43,9 @@ $(document).ready(function () {
       nombreCarreraWATT: {
         required: 'El nombre de la carrera es obligatorio',
         lettersonly: 'Solo se permiten letras en este campo',
-        minlength: 'El nombre de la carrera debe tener al menos 10 caracteres',
+        minlength: 'El nombre de la carrera debe tener al menos 5 caracteres',
         maxlength:
-          'El nombre de la carrera debe tener como máximo 10 caracteres',
+          'El nombre de la carrera debe tener como máximo 50 caracteres',
       },
       logoCarreraWATT: {
         required: 'El logo de la carrera es obligatorio',
@@ -157,13 +157,11 @@ $(document).ready(function () {
         lettersonly: true,
         required: true,
         minlength: 10,
-        maxlength: 10,
+        maxlength: 50,
       },
       creditosAsignaturaWATT: {
         required: true,
         number: true,
-        minlength: 3,
-        maxlength: 50,
       },
       fechaInicioAsignaturaWATT: {
         date: true,
@@ -204,15 +202,11 @@ $(document).ready(function () {
         minlength:
           'El nombre de la asignatura debe tener al menos 10 caracteres',
         maxlength:
-          'El nombre de la asignatura debe tener como máximo 10 caracteres',
+          'El nombre de la asignatura debe tener como máximo 50 caracteres',
       },
       creditosAsignaturaWATT: {
         required: 'Los créditos de la asignatura son obligatorios',
         number: 'Solo se permiten números en este campo',
-        minlength:
-          'Los créditos de la asignatura deben tener al menos 3 caracteres',
-        maxlength:
-          'Los créditos de la asignatura deben tener como máximo 50 caracteres',
       },
       fechaInicioAsignaturaWATT: {
         required: 'La fecha de inicio de la asignatura es obligatoria',
