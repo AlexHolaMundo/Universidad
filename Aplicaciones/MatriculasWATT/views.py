@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
-    return render(request, 'correo.html')
+    return render(request, 'index.html')
 
 def listaCarrera(request):
     carreraBdd=carreraWATT.objects.all()
@@ -137,22 +137,25 @@ def editarAsignatura(request, id):
 def actualizarCarrera(request):
     id = request.POST['idCarreraWATT']
     nombreCarreraWATT = request.POST['nombreCarreraWATT']
-    logoCarreraWATT = request.FILES.get('logoCarreraWATT')
     directorCarreraWATT = request.POST['directorCarreraWATT']
     fechaCreacionCarreraWATT = request.POST['fechaCreacionCarreraWATT']
     descripcionCarreraWATT = request.POST['descripcionCarreraWATT']
+    logoCarreraWATT = request.FILES.get('logoCarreraWATT')
 
-    carreraActualizar=carreraWATT(
-        idCarreraWATT=id,
-        nombreCarreraWATT=nombreCarreraWATT,
-        logoCarreraWATT=logoCarreraWATT,
-        directorCarreraWATT=directorCarreraWATT,
-        fechaCreacionCarreraWATT=fechaCreacionCarreraWATT,
-        descripcionCarreraWATT=descripcionCarreraWATT
-    )
+    carreraActualizar = carreraWATT.objects.get(idCarreraWATT=id)
+
+    carreraActualizar.nombreCarreraWATT = nombreCarreraWATT
+    carreraActualizar.directorCarreraWATT = directorCarreraWATT
+    carreraActualizar.fechaCreacionCarreraWATT = fechaCreacionCarreraWATT
+    carreraActualizar.descripcionCarreraWATT = descripcionCarreraWATT
+
+    if logoCarreraWATT:
+        carreraActualizar.logoCarreraWATT = logoCarreraWATT
     carreraActualizar.save()
+
     messages.success(request, 'Carrera actualizada correctamente')
     return redirect('/listaCarrera')
+
 
 def actualizarCurso(request):
     id = request.POST['idCursoWATT']
@@ -164,15 +167,18 @@ def actualizarCurso(request):
     carrera = request.POST['idCarreraWATT']
     carreraSeleccionadaWATT = carreraWATT.objects.get(idCarreraWATT=carrera)
 
-    cursoActualizar=cursoWATT(
-        idCursoWATT=id,
-        nivelCursoWATT=nivelCursoWATT,
-        descripcionCursoWATT=descripcionCursoWATT,
-        aulaCursoWATT=aulaCursoWATT,
-        horarioCursoWATT=horarioCursoWATT,
-        carrera=carreraSeleccionadaWATT
-    )
+    cursoActualizar=cursoWATT.objects.get(idCursoWATT=id)
+
+    cursoActualizar.nivelCursoWATT=nivelCursoWATT
+    cursoActualizar.descripcionCursoWATT=descripcionCursoWATT
+    cursoActualizar.aulaCursoWATT=aulaCursoWATT
+    cursoActualizar.horarioCursoWATT=horarioCursoWATT
+    cursoActualizar.carrera=carreraSeleccionadaWATT
+
+    if horarioCursoWATT:
+        cursoActualizar.horarioCursoWATT = horarioCursoWATT
     cursoActualizar.save()
+
     messages.success(request, 'Curso actualizado correctamente')
     return redirect('/listaCurso')
 
@@ -186,22 +192,26 @@ def actualizarAsignatura(request):
     silaboAsignaturaWATT = request.FILES.get('silaboAsignaturaWATT')
     descripcionAsignaturaWATT = request.POST['descripcionAsignaturaWATT']
     departamentoAsignaturaWATT = request.POST['departamentoAsignaturaWATT']
+
     curso = request.POST['idCursoWATT']
     cursoSeleccionadoWATT = cursoWATT.objects.get(idCursoWATT=curso)
 
-    asignaturaActualizar=asignaturaWATT(
-        idAsignaturaWATT=id,
-        nombreAsignaturaWATT=nombreAsignaturaWATT,
-        creditosAsignaturaWATT=creditosAsignaturaWATT,
-        fechaInicioAsignaturaWATT=fechaInicioAsignaturaWATT,
-        fechaFinalizacionAsignaturaWATT=fechaFinalizacionAsignaturaWATT,
-        profesorAsignaturaWATT=profesorAsignaturaWATT,
-        silaboAsignaturaWATT=silaboAsignaturaWATT,
-        descripcionAsignaturaWATT=descripcionAsignaturaWATT,
-        departamentoAsignaturaWATT=departamentoAsignaturaWATT,
-        curso=cursoSeleccionadoWATT
-    )
+    asignaturaActualizar=asignaturaWATT.objects.get(idAsignaturaWATT=id)
+    asignaturaActualizar.idAsignaturaWATT=id
+    asignaturaActualizar.nombreAsignaturaWATT=nombreAsignaturaWATT
+    asignaturaActualizar.creditosAsignaturaWATT=creditosAsignaturaWATT
+    asignaturaActualizar.fechaInicioAsignaturaWATT=fechaInicioAsignaturaWATT
+    asignaturaActualizar.fechaFinalizacionAsignaturaWATT=fechaFinalizacionAsignaturaWATT
+    asignaturaActualizar.profesorAsignaturaWATT=profesorAsignaturaWATT
+    asignaturaActualizar.silaboAsignaturaWATT=silaboAsignaturaWATT
+    asignaturaActualizar.descripcionAsignaturaWATT=descripcionAsignaturaWATT
+    asignaturaActualizar.departamentoAsignaturaWATT=departamentoAsignaturaWATT
+    asignaturaActualizar.curso=cursoSeleccionadoWATT
+
+    if silaboAsignaturaWATT:
+        asignaturaActualizar.silaboAsignaturaWATT = silaboAsignaturaWATT
     asignaturaActualizar.save()
+
     messages.success(request, 'Asignatura actualizada correctamente')
     return redirect('/listaAsignatura')
 

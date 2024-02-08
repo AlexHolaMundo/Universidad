@@ -1,11 +1,11 @@
+$.validator.addMethod(
+  'lettersonly',
+  function (value, element) {
+    return this.optional(element) || /^[a-zA-Z\s]*$/.test(value)
+  },
+  'Solo se permiten letras en este campo'
+)
 $(document).ready(function () {
-  $.validator.addMethod(
-    'lettersonly',
-    function (value, element) {
-      return this.optional(element) || /^[a-zA-Z\s]*$/.test(value)
-    },
-    'Solo se permiten letras en este campo'
-  )
   $('#formCarreraWATT').validate({
     rules: {
       idCarreraWATT: {
@@ -18,7 +18,6 @@ $(document).ready(function () {
         maxlength: 50,
       },
       logoCarreraWATT: {
-        required: true,
         extension: 'jpg|png|jpeg',
       },
       directorCarreraWATT: {
@@ -48,7 +47,6 @@ $(document).ready(function () {
           'El nombre de la carrera debe tener como máximo 50 caracteres',
       },
       logoCarreraWATT: {
-        required: 'El logo de la carrera es obligatorio',
         extension: 'Solo se permiten archivos jpg, png y jpeg',
       },
       directorCarreraWATT: {
@@ -71,13 +69,6 @@ $(document).ready(function () {
 })
 
 $(document).ready(function () {
-  $.validator.addMethod(
-    'lettersonly',
-    function (value, element) {
-      return this.optional(element) || /^[a-zA-Z\s]*$/.test(value)
-    },
-    'Solo se permiten letras en este campo'
-  )
   $('#formCursosWATT').validate({
     rules: {
       idCursoWATT: {
@@ -100,7 +91,6 @@ $(document).ready(function () {
         maxlength: 4,
       },
       horarioCursoWATT: {
-        required: true,
         extension: 'jpg|png|jpeg',
       },
       nombreCarreraWATT: {
@@ -130,7 +120,6 @@ $(document).ready(function () {
         maxlength: 'El aula tiene como maximo 4 caracteres',
       },
       horarioCursoWATT: {
-        required: 'El horario del curso es obligatorio',
         extension: 'Solo se permiten archivos jpg, png y jpeg',
       },
       nombreCarreraWATT: {
@@ -141,13 +130,6 @@ $(document).ready(function () {
 })
 
 $(document).ready(function () {
-  $.validator.addMethod(
-    'lettersonly',
-    function (value, element) {
-      return this.optional(element) || /^[a-zA-Z\s]*$/.test(value)
-    },
-    'Solo se permiten letras en este campo'
-  )
   $('#formAsignaturasWATT').validate({
     rules: {
       idAsignaturaWATT: {
@@ -176,7 +158,6 @@ $(document).ready(function () {
         lettersonly: true,
       },
       silaboAsignaturaWATT: {
-        required: true,
         extension: 'pdf',
       },
       departamentoAsignaturaWATT: {
@@ -221,7 +202,6 @@ $(document).ready(function () {
         lettersonly: 'Solo se permiten letras en este campo',
       },
       silaboAsignaturaWATT: {
-        required: 'El silabo de la asignatura es obligatorio',
         extension: 'Solo se permiten archivos pdf',
       },
       departamentoAsignaturaWATT: {

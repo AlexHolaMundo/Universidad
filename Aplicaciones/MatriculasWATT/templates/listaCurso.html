@@ -1,185 +1,218 @@
-{%extends './home.html'%} {%block contenido%} {% load static %}
-<div class="container m-4">
-  <h3 class="text-center">Registrar <em>Cursos</em></h3>
-  <div class="row">
-    <div class="col-md-12">
-      <form
-        id="formCursosWATT"
-        action="/crearCurso/"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        {% csrf_token %}
-        <div class="row">
-          <div class="col-md-6">
-            <fieldset>
-              <label for="">Nivel</label>
-              <input
-                name="nivelCursoWATT"
-                id="nivelCursoWATT"
-                type="text"
-                class="form-control"
-                placeholder="7mo"
-                required=""
-              />
-            </fieldset>
-          </div>
-          <div class="col-md-6">
-            <fieldset>
-              <label for="">Aula</label>
-              <input
-                name="aulaCursoWATT"
-                id="aulaCursoWATT"
-                type="text"
-                class="form-control"
-                placeholder="Aula 1"
-                required=""
-              />
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <fieldset>
-              <label for="">Horario</label>
-              <input
-                name="horarioCursoWATT"
-                id="horarioCursoWATT"
-                type="file"
-                accept="image/*"
-                class="form-control"
-                required=""
-              />
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <fieldset>
-              <label for="">Carrera</label>
-              <select
-                name="idCarreraWATT"
-                id="idCarreraWATT"
-                class="form-control"
-              >
-                <option value="">-- Seleccione una opcion --</option>
-                {% for carrera in carreras %}
-                <option value="{{carrera.idCarreraWATT}}">
-                  {{carrera.nombreCarreraWATT}}
-                </option>
-                {% endfor %}
-              </select>
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <fieldset>
-              <label for="">Descripcion</label>
-              <textarea
-                name="descripcionCursoWATT"
-                id="descripcionCursoWATT"
-                class="form-control"
-                rows="4"
-                placeholder="Alguna descripcion del curso"
-                required=""
-              ></textarea>
-            </fieldset>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <center class="m-3">
-            <button type="submit" class="btn btn-success">Registrar</button>
-            <button type="reset" class="btn btn-info">Cancelar</button>
-          </center>
-        </div>
-      </form>
+{%extends './plantilla.html'%} {%block contenido%} {% load static %}
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="page-header" style="zoom: 1.3">
+      <h3 class="page-title">Cursos</h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Registrar Curso
+          </li>
+        </ol>
+      </nav>
     </div>
-  </div>
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-bordered" id="tableCursos">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">Nivel</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Aula</th>
-            <th scope="col">Horario</th>
-            <th scope="col">Carrera</th>
-            <th scope="col">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for curso in cursos %}
-          <tr>
-            <td class="text-center">{{curso.idCursoWATT}}</td>
-            <td class="text-center">{{curso.nivelCursoWATT}}</td>
-            <td class="text-center">{{curso.descripcionCursoWATT}}</td>
-            <td class="text-center">{{curso.aulaCursoWATT}}</td>
-            <td class="text-center">
-              {% if curso.horarioCursoWATT %}
-              <a href="{{curso.horarioCursoWATT.url}}" target="_blank">
-                <img
-                  src="{{curso.horarioCursoWATT.url}}"
-                  alt=""
-                  width="50px"
-                  height="50px"
-                  target="_blank"
-                />
-              </a>
-              {% else %}
-              <b>N/A</b>
-              {% endif %}
-            </td>
-            <td class="text-center">{{curso.carrera.nombreCarreraWATT}}</td>
-            <td class="text-center">
-              <a
-                href="/editarCurso/{{curso.idCursoWATT}}"
-                class="btn btn-warning"
-              >
-                <i class="mdi mdi-pencil"></i>
-              </a>
-              <a
-                href="javascript:void(0);"
-                type="button"
-                class="btn btn-danger"
-                onclick="eliminarCarrera(' /eliminarCarrera/{{curso.idCursoWATT}} ')"
-              >
-                <i class="mdi mdi-delete"></i>
-              </a>
-            </td>
-          </tr>
-
-          {% endfor %}
-        </tbody>
-      </table>
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">Registrar <em>Cursos</em></h3>
+            <form
+              id="formCursosWATT"
+              action="/crearCurso/"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <fieldset>
+                    <label for="">Nivel</label>
+                    <input
+                      name="nivelCursoWATT"
+                      id="nivelCursoWATT"
+                      type="text"
+                      class="form-control"
+                      placeholder="7mo"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <label for="">Aula</label>
+                    <input
+                      name="aulaCursoWATT"
+                      id="aulaCursoWATT"
+                      type="text"
+                      class="form-control"
+                      placeholder="Aula 1"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <label for="">Horario</label>
+                    <input
+                      name="horarioCursoWATT"
+                      id="horarioCursoWATT"
+                      type="file"
+                      accept="image/*"
+                      class="form-control"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <label for="">Carrera</label>
+                    <select
+                      name="idCarreraWATT"
+                      required
+                      id="idCarreraWATT"
+                      class="form-control selectpicker"
+                      data-live-search="true"
+                      data-live-search-style="startsWith"
+                    >
+                      <option value="">-- Seleccione una opcion --</option>
+                      {% for carrera in carreras %}
+                      <option value="{{carrera.idCarreraWATT}}">
+                        {{carrera.nombreCarreraWATT}}
+                      </option>
+                      {% endfor %}
+                    </select>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <label for="">Descripcion</label>
+                    <textarea
+                      name="descripcionCursoWATT"
+                      id="descripcionCursoWATT"
+                      class="form-control"
+                      rows="4"
+                      placeholder="Alguna descripcion del curso"
+                      required=""
+                    ></textarea>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <center class="m-3">
+                  <button type="submit" class="btn btn-success">
+                    Registrar
+                  </button>
+                  <button type="reset" class="btn btn-info">Cancelar</button>
+                </center>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Carreras Registradas</h4>
+            <div class="table-responsive">
+              <table class="table" id="tableCursos">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Nivel</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Aula</th>
+                    <th scope="col">Horario</th>
+                    <th scope="col">Carrera</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for curso in cursos %}
+                  <tr>
+                    <td class="text-center">{{curso.idCursoWATT}}</td>
+                    <td class="text-center">{{curso.nivelCursoWATT}}</td>
+                    <td class="text-center">{{curso.descripcionCursoWATT}}</td>
+                    <td class="text-center">{{curso.aulaCursoWATT}}</td>
+                    <td class="text-center">
+                      {% if curso.horarioCursoWATT %}
+                      <a href="{{curso.horarioCursoWATT.url}}" target="_blank">
+                        <img
+                          src="{{curso.horarioCursoWATT.url}}"
+                          alt=""
+                          width="50px"
+                          height="50px"
+                          target="_blank"
+                        />
+                      </a>
+                      {% else %}
+                      <b>N/A</b>
+                      {% endif %}
+                    </td>
+                    <td class="text-center">
+                      {{curso.carrera.nombreCarreraWATT}}
+                    </td>
+                    <td class="text-center">
+                      <a
+                        href="/editarCurso/{{curso.idCursoWATT}}"
+                        class="btn btn-warning"
+                      >
+                        <i class="mdi mdi-pencil"></i>
+                      </a>
+                      <a
+                        href="javascript:void(0);"
+                        type="button"
+                        class="btn btn-danger"
+                        onclick="eliminarCarrera(' /eliminarCarrera/{{curso.idCursoWATT}} ')"
+                      >
+                        <i class="mdi mdi-delete"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="container">
-    <center>
-      <button
-        id="toggleChartButton"
-        onclick="toggleChart()"
-        class="btn btn-info"
+    <div class="container">
+      <center>
+        <button
+          id="toggleChartButton"
+          onclick="toggleChart()"
+          class="btn btn-info"
+        >
+          Mostrar/ocultar gráfico
+        </button>
+      </center>
+      <div
+        id="chartContainer"
+        style="
+          margin: auto;
+          border: 2px solid black;
+          padding: 10px;
+          display: none;
+          margin: 50px;
+        "
       >
-        Mostrar/ocultar gráfico
-      </button>
-    </center>
-    <div
-      id="chartContainer"
-      style="
-        margin: auto;
-        border: 2px solid black;
-        padding: 10px;
-        display: none;
-        margin: 50px;
-      "
-    >
-      <canvas id="chartCurso"></canvas>
+        <canvas id="chartCurso"></canvas>
+      </div>
     </div>
   </div>
 </div>
-
+<script>
+  document.getElementById('idCarreraWATT').value =
+    '{{curso.carrera.idCarreraWATT}}'
+</script>
 {% endblock %}

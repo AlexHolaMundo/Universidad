@@ -1,255 +1,281 @@
-{%extends './home.html'%} {%block contenido%} {%load static%}
-<div class="container m-4">
-  <h3 class="text-center">Registrar <em>Asignaturas</em></h3>
-  <div class="row">
-    <div class="col-md-12">
-      <form
-        id="formAsignaturasWATT"
-        action="/crearAsignatura/"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        {% csrf_token %}
-        <div class="row">
-          <div class="col-md-6">
-            <fieldset>
-              <label for="">Nombre</label>
-              <input
-                name="nombreAsignaturaWATT"
-                id="nombreAsignaturaWATT"
-                type="text"
-                class="form-control"
-                placeholder="Desarrollo Web"
-                required=""
-              />
-            </fieldset>
-          </div>
-          <div class="col-md-6">
-            <fieldset>
-              <label for="">Creditos</label>
-              <input
-                name="creditosAsignaturaWATT"
-                id="creditosAsignaturaWATT"
-                type="number"
-                class="form-control"
-                placeholder="35"
-                required=""
-              />
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <fieldset>
-              <label for="">Fecha de Inicio</label>
-              <input
-                name="fechaInicioAsignaturaWATT"
-                id="fechaInicioAsignaturaWATT"
-                type="date"
-                class="form-control"
-                required=""
-              />
-            </fieldset>
-          </div>
-          <div class="col-md-6">
-            <fieldset>
-              <label for="">Fecha de Finalizacion</label>
-              <input
-                name="fechaFinalizacionAsignaturaWATT"
-                id="fechaFinalizacionAsignaturaWATT"
-                type="date"
-                class="form-control"
-                required=""
-              />
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <fieldset>
-              <label for="">Profesor</label>
-              <input
-                name="profesorAsignaturaWATT"
-                id="profesorAsignaturaWATT"
-                type="text"
-                class="form-control"
-                placeholder="Ing. Juan Perez"
-                required=""
-              />
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <fieldset>
-              <label for="">Silabo</label>
-              <input
-                name="silaboAsignaturaWATT"
-                id="silaboAsignaturaWATT"
-                type="file"
-                accept="pdf/*"
-                class="form-control"
-                required=""
-              />
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <fieldset>
-              <label for="">Departamento</label>
-              <input
-                name="departamentoAsignaturaWATT"
-                id="departamentoAsignaturaWATT"
-                type="text"
-                class="form-control"
-                placeholder="DESWEB / BDD"
-                required=""
-              />
-            </fieldset>
-          </div>
-          <div class="col-md-6">
-            <fieldset>
-              <label for="">Curso</label>
-              <select
-                name="idCursoWATT"
-                id="idCursoWATT"
-                required
-                data-live-search="true"
-                data-live-search-style="startsWith"
-                class="form-control selectpicker"
-              >
-                <option value="">-- Seleccione una opcion --</option>
-                {% for curso in cursos %}
-                <option value="{{curso.idCursoWATT}}">
-                  {{curso.nivelCursoWATT}}
-                </option>
-                {% endfor %}
-              </select>
-            </fieldset>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <fieldset>
-              <label for="">Descripcion</label>
-              <textarea
-                name="descripcionAsignaturaWATT"
-                id="descripcionAsignaturaWATT"
-                type="text"
-                rows="4"
-                class="form-control"
-                placeholder="Alguna descripcion"
-                required=""
-              ></textarea>
-            </fieldset>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <center class="m-4">
-            <button type="submit" id="" class="btn btn-success">
-              Registrar
-            </button>
-            <button type="reset" class="btn btn-info">Cancelar</button>
-          </center>
-        </div>
-      </form>
+{%extends './plantilla.html'%} {%block contenido%} {%load static%}
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="page-header" style="zoom: 1.3">
+      <h3 class="page-title">Asignaturas</h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Registrar Asignatura
+          </li>
+        </ol>
+      </nav>
     </div>
+
     <div class="row">
-      <div class="container">
-        <div class="table-responsive">
-          <table class="table table-bordered" id="tableAsignaturas">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Creditos</th>
-                <th>Fecha de Inicio</th>
-                <th>Fecha de Finalizacion</th>
-                <th>Profesor</th>
-                <th>Silabo</th>
-                <th>Departamento</th>
-                <th>Nivel</th>
-                <th class="w-50">Descripcion</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for asignatura in asignaturas %}
-              <tr>
-                <td>{{asignatura.idAsignaturaWATT}}</td>
-                <td>{{asignatura.nombreAsignaturaWATT}}</td>
-                <td>{{asignatura.creditosAsignaturaWATT}}</td>
-                <td>{{asignatura.fechaInicioAsignaturaWATT}}</td>
-                <td>{{asignatura.fechaFinalizacionAsignaturaWATT}}</td>
-                <td>{{asignatura.profesorAsignaturaWATT}}</td>
-                  <td>
-                    {% if asignatura.silaboAsignaturaWATT%}
-                    <a
-                      href="{{asignatura.silaboAsignaturaWATT.url}}"
-                      class="btn btn-info"
-                      target="_blank"
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">Registrar <em>Asignaturas</em></h3>
+            <form
+              id="formAsignaturasWATT"
+              action="/crearAsignatura/"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <fieldset>
+                    <label for="">Nombre</label>
+                    <input
+                      name="nombreAsignaturaWATT"
+                      id="nombreAsignaturaWATT"
+                      type="text"
+                      class="form-control"
+                      placeholder="Desarrollo Web"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <label for="">Creditos</label>
+                    <input
+                      name="creditosAsignaturaWATT"
+                      id="creditosAsignaturaWATT"
+                      type="number"
+                      class="form-control"
+                      placeholder="35"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <fieldset>
+                    <label for="">Fecha de Inicio</label>
+                    <input
+                      name="fechaInicioAsignaturaWATT"
+                      id="fechaInicioAsignaturaWATT"
+                      type="date"
+                      class="form-control"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <label for="">Fecha de Finalizacion</label>
+                    <input
+                      name="fechaFinalizacionAsignaturaWATT"
+                      id="fechaFinalizacionAsignaturaWATT"
+                      type="date"
+                      class="form-control"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <label for="">Profesor</label>
+                    <input
+                      name="profesorAsignaturaWATT"
+                      id="profesorAsignaturaWATT"
+                      type="text"
+                      class="form-control"
+                      placeholder="Ing. Juan Perez"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <label for="">Silabo</label>
+                    <input
+                      name="silaboAsignaturaWATT"
+                      id="silaboAsignaturaWATT"
+                      type="file"
+                      accept="pdf/*"
+                      class="form-control"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <fieldset>
+                    <label for="">Departamento</label>
+                    <input
+                      name="departamentoAsignaturaWATT"
+                      id="departamentoAsignaturaWATT"
+                      type="text"
+                      class="form-control"
+                      placeholder="DESWEB / BDD"
+                      required=""
+                    />
+                  </fieldset>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <label for="">Curso</label>
+                    <select
+                      name="idCursoWATT"
+                      id="idCursoWATT"
+                      required
+                      data-live-search="true"
+                      data-live-search-style="startsWith"
+                      class="form-control selectpicker"
                     >
-                      <i class="mdi mdi-eye"></i> Ver Silabo
-                    </a>
-                    {% else %}
-                    <a href="javascript:void(0);" class="btn btn-danger" disabled>
-                      <i class="mdi mdi-eye"></i> Sin Silabo
-                    </a>
-                    {% endif %}
-                  </td>
-                <td>{{asignatura.departamentoAsignaturaWATT}}</td>
-                <td>{{asignatura.curso.nivelCursoWATT}}</td>
-                <td class="w-50">{{asignatura.descripcionAsignaturaWATT}}</td>
-                <td>
-                  <a
-                    href="/editarAsignatura/{{asignatura.idAsignaturaWATT}}"
-                    class="btn btn-warning"
-                    ><i class="mdi mdi-pencil"></i
-                  ></a>
-                  <a
-                    href="javascript:void(0);"
-                    type="button"
-                    class="btn btn-danger"
-                    onclick="eliminarAsignatura(' /eliminarAsignatura/{{asignatura.idAsignaturaWATT}} ')"
-                  >
-                    <i class="mdi mdi-delete"></i>
-                  </a>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+                      <option value="">-- Seleccione una opcion --</option>
+                      {% for curso in cursos %}
+                      <option value="{{curso.idCursoWATT}}">
+                        {{curso.nivelCursoWATT}}
+                      </option>
+                      {% endfor %}
+                    </select>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <label for="">Descripcion</label>
+                    <textarea
+                      name="descripcionAsignaturaWATT"
+                      id="descripcionAsignaturaWATT"
+                      type="text"
+                      rows="4"
+                      class="form-control"
+                      placeholder="Alguna descripcion"
+                      required=""
+                    ></textarea>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <center class="m-4">
+                  <button type="submit" id="" class="btn btn-success">
+                    Registrar
+                  </button>
+                  <button type="reset" class="btn btn-info">Cancelar</button>
+                </center>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-<div class="container">
-    <center>
-      <button
-        id="toggleChartButton"
-        onclick="toggleChart()"
-        class="btn btn-info"
+    <div class="row">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Carreras Registradas</h4>
+            <div class="table-responsive">
+              <table class="table" id="tableAsignaturas">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Creditos</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha de Finalizacion</th>
+                    <th>Profesor</th>
+                    <th>Silabo</th>
+                    <th>Departamento</th>
+                    <th>Nivel</th>
+                    <th class="w-50">Descripcion</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for asignatura in asignaturas %}
+                  <tr>
+                    <td>{{asignatura.idAsignaturaWATT}}</td>
+                    <td>{{asignatura.nombreAsignaturaWATT}}</td>
+                    <td>{{asignatura.creditosAsignaturaWATT}}</td>
+                    <td>{{asignatura.fechaInicioAsignaturaWATT}}</td>
+                    <td>{{asignatura.fechaFinalizacionAsignaturaWATT}}</td>
+                    <td>{{asignatura.profesorAsignaturaWATT}}</td>
+                    <td>
+                      {% if asignatura.silaboAsignaturaWATT%}
+                      <a
+                        href="{{asignatura.silaboAsignaturaWATT.url}}"
+                        class="btn btn-info"
+                        target="_blank"
+                      >
+                        <i class="mdi mdi-eye"></i> Ver Silabo
+                      </a>
+                      {% else %}
+                      <a
+                        href="javascript:void(0);"
+                        class="btn btn-danger"
+                        disabled
+                      >
+                        <i class="mdi mdi-eye"></i> Sin Silabo
+                      </a>
+                      {% endif %}
+                    </td>
+                    <td>{{asignatura.departamentoAsignaturaWATT}}</td>
+                    <td>{{asignatura.curso.nivelCursoWATT}}</td>
+                    <td class="w-50">
+                      {{asignatura.descripcionAsignaturaWATT}}
+                    </td>
+                    <td>
+                      <a
+                        href="/editarAsignatura/{{asignatura.idAsignaturaWATT}}"
+                        class="btn btn-warning"
+                        ><i class="mdi mdi-pencil"></i
+                      ></a>
+                      <a
+                        href="javascript:void(0);"
+                        type="button"
+                        class="btn btn-danger"
+                        onclick="eliminarAsignatura(' /eliminarAsignatura/{{asignatura.idAsignaturaWATT}} ')"
+                      >
+                        <i class="mdi mdi-delete"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <center>
+        <button
+          id="toggleChartButton"
+          onclick="toggleChart()"
+          class="btn btn-info"
+        >
+          Mostrar/ocultar gráfico
+        </button>
+      </center>
+      <div
+        id="chartContainer"
+        style="
+          margin: auto;
+          border: 2px solid black;
+          padding: 10px;
+          display: none;
+          margin: 50px;
+        "
       >
-        Mostrar/ocultar gráfico
-      </button>
-    </center>
-    <div
-      id="chartContainer"
-      style="
-        margin: auto;
-        border: 2px solid black;
-        padding: 10px;
-        display: none;
-        margin: 50px;
-      "
-    >
-      <canvas id="chartAsignatura"></canvas>
+        <canvas id="chartAsignatura"></canvas>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
 
 {%endblock%}

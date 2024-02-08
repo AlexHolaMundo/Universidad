@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>UniversidadWATT</title>
+    <!--Importacion de cdn jquery-->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Importacion de data tables-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"
+    />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"
+    ></script>
+
+    <!--Importacion de Librerias-->
+    <script src="{% static 'libraries/jquery-validate/jquery.validate.js'%}"></script>
+    <!-- Validaciones:js -->
+    <script src="{% static 'js/formSchemas.js'%}"></script>
+    <!-- Bootstrap Fileinput JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/js/fileinput.min.js"></script>
+    <!-- español fileinput -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/js/locales/es.min.js"></script>
+
+    <!--Importacion de FileInput-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/css/fileinput.min.css"
+    />
+    <script src="{% static 'js/inputFile.js'%}"></script>
+
+    <!--Importacion de bootstrap select-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--<script src="{% static 'vendors/js/vendor.bundle.base.js' %}">
+    </script>
+    -->
+    <script src="{% static 'js/off-canvas.js' %}"></script>
+    <script src="{% static 'js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'js/misc.js' %}"></script>
+    <!--
+    <script src="{% static 'js/settings.js' %}"></script>
+    <script src="{% static 'js/todolist.js' %}"></script>-->
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    <!-- plugins:css -->
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/css/vendor.bundle.base.css' %}"
+    />
+    <!-- endinject -->
+    <!-- Plugin css for this page
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/jvectormap/jquery-jvectormap.css' %}"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/owl-carousel-2/owl.carousel.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'vendors/owl-carousel-2/owl.theme.default.min.css' %}"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <link rel="shortcut icon" href="{% static 'images/school.svg' %}" />
+    <!--Importacion de Izi toast alertas-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css"
+      integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+      integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="{% static 'js/messageDelete.js' %}"></script>
+    <!--Importacion de Chartjs-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/charts.js' %}"></script>
+  </head>
+  <body>
+    <div class="container-scroller" style="zoom: 1.4">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div
+          class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
+        >
+          <a class="sidebar-brand brand-logo" href="/"
+            >UniversidadWATT <i class="mdi mdi-school"></i
+          ></a>
+          <a class="sidebar-brand brand-logo-mini" href="/"
+            ><img src="/static/images/descarga.png" alt=""
+          /></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img
+                    class="img-xs rounded-circle"
+                    src="{%static 'images/faces/face15.jpg'%}"
+                    alt=""
+                  />
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">AlexHolaMundo</h5>
+                  <span><h6>Usuario Premium</h6></span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/">
+              <span class="menu-icon">
+                <i class="mdi mdi-grid"></i>
+              </span>
+              <span class="menu-title">Inicio</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Secciones</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/listaCarrera">
+              <span class="menu-icon">
+                <i class="mdi mdi-school"></i>
+              </span>
+              <span class="menu-title">Carrera</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/listaCurso">
+              <span class="menu-icon">
+                <i class="mdi mdi-bulletin-board"></i>
+              </span>
+              <span class="menu-title">Cursos</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/listaAsignatura">
+              <span class="menu-icon">
+                <i class="mdi mdi-book-minus"></i>
+              </span>
+              <span class="menu-title">Asignaturas</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/enviar_correo">
+              <span class="menu-icon">
+                <i class="mdi mdi-email"></i>
+              </span>
+              <span class="menu-title">Contacto</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="container-fluid page-body-wrapper">
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div
+            class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
+          >
+            <a class="navbar-brand brand-logo-mini" href="/"
+              ><img src="{%static 'images/logo-mini.svg'%}" alt="logo"
+            /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button
+              class="navbar-toggler navbar-toggler align-self-center"
+              type="button"
+              data-toggle="minimize"
+            >
+              <span class="mdi mdi-menu"></span>
+            </button>
+            <ul class="navbar-nav w-100">
+              <li class="nav-item w-100">
+                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Buscar Cursos"
+                  />
+                </form>
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link"
+                  id="profileDropdown"
+                  href="#"
+                  data-toggle="dropdown"
+                >
+                  <div class="navbar-profile">
+                    <img
+                      class="img-xs rounded-circle"
+                      src="{%static 'images/faces/face15.jpg'%}"
+                      alt=""
+                    />
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">
+                      AlexHolaMundo
+                    </p>
+                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <button
+              class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+              type="button"
+              data-toggle="offcanvas"
+            >
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+          </div>
+        </nav>
+        {% block contenido %} {% endblock %}
+      </div>
+    </div>
+    {% if messages %} {% for message in messages %}
+    <script>
+      iziToast.success({
+        title: 'ATENCION',
+        message: '{{message}}',
+        position: 'topLeft',
+      })
+    </script>
+    {% endfor %} {% endif %}
+  </body>
+  <script src="{% static 'js/pagination.js' %}"></script>
+</html>

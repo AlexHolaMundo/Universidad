@@ -33668,8 +33668,8 @@ div.tagsinput span.tag a {
 
 label.error {
   color: red;
-  font-size: 12px;
-  font-weight: semibold;
+  font-size: 9px;
+  font-weight: normal;
   padding-left: 5px;
 }
 input.error,
